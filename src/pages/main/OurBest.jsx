@@ -3,7 +3,7 @@ import img1 from "../../assets/1.png";
 import img2 from "../../assets/2.png";
 import img3 from "../../assets/3.png";
 
-export const OurBest = ()=> {
+export const OurBest = () => {
     return (
         <section className="main-best" style={{ backgroundImage: `url(${paper})` }}>
                 <h2 className="section-title">Our best</h2>
