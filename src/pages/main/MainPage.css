@@ -1,0 +1,103 @@
+/* ===== MAIN PAGE ===== */
+.main-page {
+	width: 100%;
+}
+
+/* Hero */
+.main-hero {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	min-height: 640px;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.main-hero::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.35);
+	z-index: 0;
+}
+
+.main-hero__content {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+	text-align: center;
+	color: #fff;
+	padding: 40px 60px 80px;
+}
+
+.main-hero__title {
+	font-family: 'Playfair Display', serif;
+	font-size: 48px;
+	font-weight: 400;
+	font-style: italic;
+	max-width: 620px;
+	line-height: 1.2;
+	margin-bottom: 18px;
+}
+
+.main-hero__icon {
+	width: 30px;
+	margin-bottom: 22px;
+}
+
+.main-hero__subtitle {
+	font-size: 15px;
+	font-weight: 300;
+	opacity: 0.9;
+	margin-bottom: 6px;
+}
+
+.main-hero__btn {
+	margin-top: 24px;
+	background: transparent;
+	border: 1px solid #fff;
+	color: #fff;
+	padding: 10px 44px;
+	font-size: 13px;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+	transition: background 0.2s, color 0.2s;
+}
+
+.main-hero__btn:hover {
+	background: #fff;
+	color: #333;
+}
+
+/* About */
+.main-about {
+	background: #fff;
+	padding: 80px 60px;
+	text-align: center;
+}
+
+.main-about__text {
+	max-width: 680px;
+	margin: 0 auto;
+	font-size: 14px;
+	line-height: 1.85;
+	color: #555;
+	text-align: center;
+}
+
+.main-about__text p + p {
+	margin-top: 20px;
+}
+
+/* Our best */
+.main-best {
+	padding: 80px 60px;
+	background-size: cover;
+	background-repeat: repeat;
+	text-align: center;
+}

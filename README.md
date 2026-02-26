@@ -1,0 +1,1 @@
+Practical task at the end of the module: "The Complete JavaScript + React Course".
