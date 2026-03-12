@@ -2,8 +2,8 @@ import "./CoffeePage.css";
 import maskGroupBg from "../../assets/maskGroupBg.png";
 import { CoffeeHero } from "../../components/CoffeeHero";
 import CoffeePageAbout from "../../assets/CoffeePageAbout.png";
-import { CoffeeFilter } from "./CoffeeFilter";
-import { CoffeeProducts } from "../../components/CoffeeProducts";
+import {CoffeeFilter} from "./CoffeeFilter";
+import {CoffeeProducts} from "../../components/CoffeeProducts";
 import { Footer } from "../../components/Footer";
 import { CoffeeAbout } from "../../components/CoffeeAbout";
 

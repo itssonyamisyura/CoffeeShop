@@ -1,3 +1,4 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { MainPage } from "./pages/main/MainPage";
 import { CoffeePage } from "./pages/coffee/CoffeePage";
@@ -7,10 +8,12 @@ import { CoffeeItemsPage } from "./pages/coffee-item/CoffeeItemPage";
 function App() {
 	return (
 		<>
-			{/* <MainPage /> */}
-			<CoffeePage />
-			{/* <GoodsPage /> */}
-			{/* <CoffeeItemsPage /> */}
+			<Routes>
+				<Route path="/" element={<MainPage />}/>
+				<Route path="/coffee" element={<CoffeePage/>} />
+				<Route path="/goods" element={<GoodsPage />}/>
+				<Route path="/items/:itemId" element={<CoffeeItemsPage/>}/>
+			</Routes>
 		</>
 	);
 }
