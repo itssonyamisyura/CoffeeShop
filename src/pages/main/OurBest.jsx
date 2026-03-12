@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import paper from "../../assets/paper.png";
-import { products } from "../../components/Products";
+import { products } from "../../data/Products";
 
 export const OurBest = () => {
     const navigate = useNavigate();
@@ -11,7 +11,7 @@ export const OurBest = () => {
         style={{ backgroundImage: `url(${paper})` }}>
             <h2 className="section-title">Our best</h2>
             <div className="products-grid">
-                {products.map((product) => (
+                {products.slice(0,3).map((product) => (
                    <div key={product.id} className="product-card"
                    onClick={() => navigate(`/items/${product.id}`)}>
                    <img 
