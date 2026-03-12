@@ -1,5 +1,5 @@
 
-export const CoffeeFilter = ({term, onUpdateSearch, onFilterSelect}) => {
+export const CoffeeFilter = ({term, onUpdateSearch, onFilterSelect, filter}) => {
     return (
         <div className="coffee-filter">
             <div className="coffee-filter__search">
@@ -14,13 +14,13 @@ export const CoffeeFilter = ({term, onUpdateSearch, onFilterSelect}) => {
             </div>
             <div className="coffee-filter__tags">
                 <span className="coffee-filter__label">Or filter</span>
-                <button className="coffee-filter__tag"
+                <button className={`coffee-filter__tag ${filter === "Brazil" ? "active" : ""}`}
                 onClick={() => onFilterSelect('Brazil')} >Brazil</button>
-                <button className="coffee-filter__tag"
+                <button className={`coffee-filter__tag ${filter === "Kenya" ? "active" : ""}`}
                 onClick={() => onFilterSelect('Kenya')}>Kenya</button>
-                <button className="coffee-filter__tag"
+                <button className={`coffee-filter__tag ${filter === "Colombia" ? "active" : ""}`}
                 onClick={() => onFilterSelect('Colombia')}>Colombia</button>
-                <button className="coffee-filter__tag"
+                <button className="coffee-filter__tag filter-btn--reset"
                 onClick={() => onFilterSelect('all')}>Reset</button>
             </div>
 	    </div>
