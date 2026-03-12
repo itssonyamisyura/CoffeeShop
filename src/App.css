@@ -100,6 +100,8 @@
 
 .product-card {
 	background: #fff;
+	cursor: pointer;
+	transition: all .25s ease;
 	padding: 16px;
 	width: 200px;
 	text-align: center;
