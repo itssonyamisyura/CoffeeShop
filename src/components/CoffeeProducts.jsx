@@ -11,6 +11,7 @@ const navigate = useNavigate();
 
 const [term, setTerm] = useState('');
 const [filter, setFilter] = useState('all');
+const [visibleCount, setVisibleCount] = useState(6);
 
 useEffect(() => {
     AOS.init({
@@ -37,6 +38,8 @@ const visibleProducts = products
     .filter(p => p.name.toLowerCase().includes(term.toLowerCase()))
     .filter(p => filter === 'all' || p.country === filter);
 
+const displayedProducts = visibleProducts.slice(0, visibleCount);
+
 return ( 
         <section className="coffee-products">
             <CoffeeFilter 
@@ -50,7 +53,7 @@ return (
                 <p className="coffee-products__empty">No products found</p>
             ) : (
                 <div className="products-grid products-grid--wide">
-                {visibleProducts.map((product, index) => {
+                {displayedProducts.map((product, index) => {
                     return (
                     <div className="product-card" 
                         key={product.id}
@@ -66,6 +69,15 @@ return (
                     </div>
                 )})}
             </div>
+            )}
+
+            {visibleCount < visibleProducts.length && (
+                <button
+                    className="coffee-products__load-more"
+                    onClick={() => setVisibleCount(prev => prev + 3)}
+                >
+                    Load more
+                </button>
             )}
         </section>
     )
