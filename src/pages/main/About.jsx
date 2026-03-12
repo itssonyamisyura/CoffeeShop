@@ -8,8 +8,8 @@ export const About = () => {
                 <img src={blackGroup} alt="" />
             </div>
             <div className="main-about__text">
-                <p>Extremity sweetness difficult behaviour be of. On disposal of as landlord horrible. Afraid at highly months do things on at. Situation recommend objection do intention so questions. As greatly removed calling pleased improve an. Last ask him cold feel not spot shy want. Children me laughing we prospect answered followed. At it went is song that held help face.</p>
-                <p>Now residence dashwoods she excellent you. Shade being under his bed her. Much read on as draw. Blessing for ignorant exercise any yourself unpacket. Pleasant horrible but confined day end marriage. Eagerness furniture set preserved for recommend. Did even but nor are most gave hope. Secure active living depend son repair day ladies now.</p>
+                <p>We believe that great coffee begins with great beans. That’s why we carefully select coffee from trusted farms around the world and roast it with precision to highlight its natural aroma and flavor.</p>
+                <p>Our mission is simple — to bring people together over a perfect cup of coffee. Whether you prefer a rich espresso or a smooth filter brew, we want every sip to be memorable.</p>
             </div>
         </section>
     )

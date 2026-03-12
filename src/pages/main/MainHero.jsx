@@ -1,6 +1,7 @@
 import menuLogoWhite from "../../assets/menuLogoWhite.png";
 import mainBG from "../../assets/MainBG.jpg";
 import group from "../../assets/Group.png"; 
+import { NavLink, Link} from "react-router-dom";
 
 
 export const MainHero = () => {
@@ -9,8 +10,8 @@ export const MainHero = () => {
 			<nav className="nav">
 				<img src={menuLogoWhite} alt="Coffee house" className="nav__logo" />
 				<ul className="nav__links">
-					<li><a href="#">Our coffee</a></li>
-					<li><a href="#">For your pleasure</a></li>
+					<li><NavLink to='/coffee'>Our coffee</NavLink></li>
+					<li><NavLink to='/goods'>For your pleasure</NavLink></li>
 				</ul>
 			</nav>
 
@@ -19,7 +20,9 @@ export const MainHero = () => {
 				<img src={group} alt="" className="main-hero__icon" />
 				<p className="main-hero__subtitle">We makes every day full of energy and taste</p>
 				<p className="main-hero__subtitle">Want to try our beans?</p>
-				<button className="main-hero__btn">More</button>
+				<Link to='/coffee'>
+					<button className="main-hero__btn">More</button>
+				</Link>
 			</div>
 		</section>
 	)

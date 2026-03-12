@@ -12,9 +12,18 @@ export const CoffeeAbout = ( {image, title} ) => {
                 <div className="section-divider section-divider--left">
                     <img src={blackGroup} alt="" />
                 </div>
-                <p>Extremity sweetness difficult behaviour be of. On disposal of us landlord horrible.</p>
-                <p>Afraid at highly months do things on at. Situation recommend objection do intention so questions.</p>
-                <p>As greatly removed calling pleased improve an. Last ask him cold feel not spot shy want. Children me laughing we prospect answered followed. At it went is song that held help face.</p>
+                <p>
+                Our coffee is carefully selected from the best plantations around the world.
+                Each bean is roasted with attention to preserve its natural aroma and rich flavor.
+                </p>
+                <p>
+                We work directly with trusted farmers to ensure high quality and sustainability.
+                This allows us to deliver fresh coffee that keeps its character in every cup.
+                </p>
+                <p>
+                From bright African blends to smooth South American varieties,
+                our collection is made for people who truly enjoy coffee.
+                </p>
             </div>
         </section>
     )
