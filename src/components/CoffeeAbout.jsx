@@ -9,7 +9,7 @@ export const CoffeeAbout = ( {image, title} ) => {
             </div>
             <div className="coffee-about__text">
                 <h2 className="section-title section-title--left">{title}</h2>
-                <div className="section-divider section-divider--left">
+                <div className="section-divider section-divider">
                     <img src={blackGroup} alt="" />
                 </div>
                 <p>
