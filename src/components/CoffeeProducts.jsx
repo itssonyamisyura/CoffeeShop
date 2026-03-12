@@ -28,6 +28,11 @@ const onFilterSelect = (filter) => {
     setFilter(filter);
 }
 
+const onResetFilters = () => {
+    setTerm('');
+    setFilter('all');
+}
+
 const visibleProducts = products
     .filter(p => p.name.toLowerCase().includes(term.toLowerCase()))
     .filter(p => filter === 'all' || p.country === filter);
@@ -38,23 +43,30 @@ return (
             term={term}
             filter={filter}
             onUpdateSearch={onUpdateSearch}
-            onFilterSelect={onFilterSelect}/>
+            onFilterSelect={onFilterSelect}
+            onResetFilters={onResetFilters}/>
 
-            <div className="products-grid products-grid--wide">
+            {visibleProducts.length === 0 ? (
+                <p className="coffee-products__empty">No products found</p>
+            ) : (
+                <div className="products-grid products-grid--wide">
                 {visibleProducts.map((product, index) => {
                     return (
                     <div className="product-card" 
-                    key={product.id}
-                    onClick={() => navigate(`/items/${product.id}`)}
-                    data-aos="fade-up"
-                    data-aos-delay={Math.floor(index / 3) * 200}>
-                    <img src={product.img} alt={product.name} className="product-card__img" />
+                        key={product.id}
+                        onClick={() => navigate(`/items/${product.id}`)}
+                        data-aos="fade-up"
+                        data-aos-delay={Math.floor(index / 3) * 200}>
+                    <img 
+                        src={product.img} 
+                        alt={product.name} className="product-card__img" />
                     <p className="product-card__name">{product.name}</p>
                     <p className="product-card__country">{product.country}</p>
                     <p className="product-card__price">{product.price}</p>
                     </div>
                 )})}
             </div>
+            )}
         </section>
     )
 }

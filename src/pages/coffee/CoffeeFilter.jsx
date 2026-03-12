@@ -1,5 +1,5 @@
 
-export const CoffeeFilter = ({term, onUpdateSearch, onFilterSelect, filter}) => {
+export const CoffeeFilter = ({term, onUpdateSearch, onFilterSelect, filter, onResetFilters}) => {
     return (
         <div className="coffee-filter">
             <div className="coffee-filter__search">
@@ -21,7 +21,7 @@ export const CoffeeFilter = ({term, onUpdateSearch, onFilterSelect, filter}) => 
                 <button className={`coffee-filter__tag ${filter === "Colombia" ? "active" : ""}`}
                 onClick={() => onFilterSelect('Colombia')}>Colombia</button>
                 <button className="coffee-filter__tag filter-btn--reset"
-                onClick={() => onFilterSelect('all')}>Reset</button>
+                onClick={onResetFilters}>Reset</button>
             </div>
 	    </div>
     )
