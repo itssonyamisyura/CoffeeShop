@@ -8,9 +8,11 @@ export const MainHero = () => {
 	return (
 		<section className="main-hero" style={{ backgroundImage: `url(${mainBG})` }}>
 			<nav className="nav">
-				<img src={menuLogoWhite} alt="Coffee house" className="nav__logo" />
+				<Link to="/">
+					<img src={menuLogoWhite} alt="Coffee house" className="nav__logo" />
+				</Link>
 				<ul className="nav__links">
-					<li><NavLink to='/coffee'>Our coffee</NavLink></li>
+					<li><NavLink to='/coffee' end>Our coffee</NavLink></li>
 					<li><NavLink to='/goods'>For your pleasure</NavLink></li>
 				</ul>
 			</nav>

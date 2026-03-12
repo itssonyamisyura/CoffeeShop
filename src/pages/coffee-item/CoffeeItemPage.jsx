@@ -4,6 +4,7 @@ import { products } from "../../components/Products";
 import { Footer } from "../../components/Footer";
 import { ItemAbout } from "./ItemAbout";
 import { CoffeeHero } from "../../components/CoffeeHero";
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 
 export const CoffeeItemsPage = () => {
@@ -15,6 +16,7 @@ export const CoffeeItemsPage = () => {
 
 	return (
 		<div className="coffee-item-page">
+			
 			{/* HERO */}
 			<CoffeeHero
 			image={maskGroupBg}

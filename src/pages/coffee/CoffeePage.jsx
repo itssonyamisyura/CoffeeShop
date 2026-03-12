@@ -6,10 +6,18 @@ import {CoffeeFilter} from "./CoffeeFilter";
 import {CoffeeProducts} from "../../components/CoffeeProducts";
 import { Footer } from "../../components/Footer";
 import { CoffeeAbout } from "../../components/CoffeeAbout";
+import { Helmet } from "react-helmet-async";
 
 export const CoffeePage = () => {
 	return (
+		
 		<div className="coffee-page">
+
+			<Helmet>
+				<title>Our Coffee</title>
+				<meta name="description" content="Discover our selection of premium coffee beans from around the world." />
+			</Helmet>
+
 			{/* HERO */}
 			<CoffeeHero
 			image={maskGroupBg}

@@ -3,11 +3,17 @@ import { OurBest } from "./OurBest";
 import { About } from "./About";
 import { Footer } from "../../components/Footer";
 import { MainHero } from "./MainHero";
+import { Helmet } from "react-helmet-async";
 
 
 export const MainPage = () => {
 	return (
 		<div className="main-page">
+
+			<Helmet>
+				<title>Coffee House</title>
+			</Helmet>
+
 			{/* HERO */}
 			<MainHero/>
 
