@@ -4,10 +4,12 @@ import { MainPage } from "./pages/main/MainPage";
 import { CoffeePage } from "./pages/coffee/CoffeePage";
 import { GoodsPage } from "./pages/goods/GoodsPage";
 import { CoffeeItemsPage } from "./pages/coffee-item/CoffeeItemPage";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 function App() {
 	return (
 		<>
+		<ScrollToTop />
 			<Routes>
 				<Route path="/" element={<MainPage />}/>
 				<Route path="/coffee" element={<CoffeePage/>} />
