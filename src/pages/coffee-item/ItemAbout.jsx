@@ -1,6 +1,6 @@
 import blackGroup from "../../assets/blackGroup.png";
 
-export const ItemAbout = ({product}) => {
+export const ItemAbout = ({product, addToCart}) => {
     if (!product) {
         return <div>Product not found</div>
     }
@@ -25,6 +25,11 @@ export const ItemAbout = ({product}) => {
                     <span className="item-about__price-label">Price:</span>
                     <span className="item-about__price-value">{product.price}</span>
                 </p>
+                <button 
+                className="item-about__btn"
+                onClick={() => addToCart(product)}>
+                    Add to cart
+                </button>
             </div>
         </section>
     )

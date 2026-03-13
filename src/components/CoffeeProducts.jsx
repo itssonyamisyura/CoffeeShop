@@ -38,7 +38,7 @@ const visibleProducts = products
     .filter(p => p.name.toLowerCase().includes(term.toLowerCase()))
     .filter(p => filter === 'all' || p.country === filter);
 
-const displayedProducts = visibleProducts.slice(0, visibleCount);
+const displayedProducts = visibleProducts.slice(0, visibleCount); 
 
 return ( 
         <section className="coffee-products">

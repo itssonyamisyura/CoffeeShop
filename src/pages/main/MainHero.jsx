@@ -4,7 +4,8 @@ import group from "../../assets/Group.png";
 import { NavLink, Link} from "react-router-dom";
 
 
-export const MainHero = () => {
+export const MainHero = ({cartItems = []}) => {
+
 	return (
 		<section className="main-hero" style={{ backgroundImage: `url(${mainBG})` }}>
 			<nav className="nav">
@@ -14,6 +15,9 @@ export const MainHero = () => {
 				<ul className="nav__links">
 					<li><NavLink to='/coffee' end>Our coffee</NavLink></li>
 					<li><NavLink to='/goods'>For your pleasure</NavLink></li>
+					<li>
+						<NavLink to='/cart' className="nav__cart">Cart ({cartItems.length})</NavLink>
+					</li>
 				</ul>
 			</nav>
 

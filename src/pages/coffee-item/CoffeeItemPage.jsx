@@ -6,7 +6,7 @@ import { ItemAbout } from "./ItemAbout";
 import { CoffeeHero } from "../../components/CoffeeHero";
 import { useParams } from "react-router-dom";
 
-export const CoffeeItemsPage = () => {
+export const CoffeeItemsPage = ({addToCart, cartItems}) => {
 	let {itemId} = useParams();
 
 	const product = products.find((item) => {
@@ -19,10 +19,13 @@ export const CoffeeItemsPage = () => {
 			{/* HERO */}
 			<CoffeeHero
 			image={maskGroupBg}
-			title="Our Coffee"/>
+			title="Our Coffee"
+			cartItems={cartItems}/>
 
 			{/* ABOUT IT */}
-			<ItemAbout product={product} />
+			<ItemAbout 
+			product={product} 
+			addToCart={addToCart}/>
 
 			{/* FOOTER */}
 			<Footer/>
