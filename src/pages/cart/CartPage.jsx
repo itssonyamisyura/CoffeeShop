@@ -4,8 +4,12 @@ import { CoffeeHero } from '../../components/CoffeeHero';
 import { Footer } from '../../components/Footer';
 import maskGroupBg from "../../assets/maskGroupBg.png";
 import './CartPage.css';
+import { useState } from 'react';
 
-export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, total, cartCount}) => {
+export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, total, cartCount, undoClearCart}) => {
+
+    const [showUndo, setShowUndo] = useState(false);
+    
 
     return (
         <div className="cart-page">
@@ -18,8 +22,22 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
 
             <section className="cart-content">
                 <h1>Cart</h1>
+
                 {cartItems.length > 0 && (
-                     <p>Items in cart: {cartItems.length}</p>
+                    <p>Items in cart: {cartItems.length}</p>
+                )}
+
+                {showUndo && (
+                    <div className="cart-undo">
+                        <span>Cart cleared.</span>
+
+                        <button onClick={() => {
+                        undoClearCart();
+                        setShowUndo(false);
+                        }}>
+                            Undo
+                        </button>
+                    </div>
                 )}
 
                 {cartItems.length === 0 ? (
@@ -36,8 +54,8 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
                             <CartItem 
                                 key={item.id} 
                                 item={item}
-                                decreaseQuantity={decreaseQuantity}
-                                increaseQuantity={increaseQuantity} 
+                                onDecrease={() => decreaseQuantity(item.id)}
+                                onIncrease={() => increaseQuantity(item.id)} 
                                 removeFromCart={removeFromCart}/> 
                             ))}
                         </div>
@@ -49,7 +67,14 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
                                     to='/coffee'
                                     className="cart-summary__link">Continue Shopping</Link>
                                 {cartItems.length > 0 && (
-                                    <button onClick={clearCart}>
+                                    <button onClick={() => {
+                                        clearCart();
+                                        setShowUndo(true);
+
+                                        setTimeout(() => {
+                                            setShowUndo(false);
+                                        }, 5000);
+                                    }}>
                                         Clear Cart
                                     </button>
                                 )}

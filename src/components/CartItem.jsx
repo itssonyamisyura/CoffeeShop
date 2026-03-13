@@ -1,5 +1,5 @@
 
-function CartItem ({item, increaseQuantity,decreaseQuantity, removeFromCart}) {
+function CartItem ({item, onIncrease, onDecrease, removeFromCart}) {
     const price = parseFloat(item.price.replace('$', ''));
     const subtotal = price * item.quantity;
     
@@ -21,9 +21,9 @@ function CartItem ({item, increaseQuantity,decreaseQuantity, removeFromCart}) {
 
             <div className="cart-item__actions">
                 <div className="cart-item__quantity">
-                    <button onClick={() => decreaseQuantity(item.id)}>-</button>
+                    <button onClick={onDecrease}>-</button>
                         <span>Quantity: {item.quantity}</span>
-                    <button onClick={() => increaseQuantity(item.id)}>+</button>
+                    <button onClick={onIncrease}>+</button>
                 </div>
             </div>
 

@@ -107,3 +107,9 @@
     border-radius: 8px;
 }
 
+.cart-undo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+}

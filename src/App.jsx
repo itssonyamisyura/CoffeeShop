@@ -16,6 +16,8 @@ function App() {
 		return savedCart ? JSON.parse(savedCart) : [];
 	});
 
+	const [lastRemovedCart, setLastRemovedCart] = useState([]);
+
 	const total = cartItems.reduce((sum, item) => {
         const price = parseFloat(item.price.replace('$', ''));
         return sum + price * item.quantity;
@@ -73,8 +75,13 @@ function App() {
 	};
 
 	const clearCart = () => {
+		setLastRemovedCart(cartItems);
 		setCartItems([]);
 	};
+
+	const undoClearCart = () => {
+		setCartItems(lastRemovedCart); //cartItems = lastRemovedCart
+	}
 
 	useEffect(() => {
 		localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -112,7 +119,8 @@ function App() {
 					decreaseQuantity={decreaseQuantity}
 					clearCart={clearCart}
 					total={total}
-					cartCount={cartCount}/>
+					cartCount={cartCount}
+					undoClearCart={undoClearCart}/>
 				} 
 				/>
 				<Route 
