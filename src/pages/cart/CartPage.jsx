@@ -74,15 +74,17 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
 
                                         setTimeout(() => {
                                             setShowUndo(false);
-                                        }, 5000);
+                                        }, 7000);
                                     }}>
                                         Clear Cart
                                     </button>
                                 )}
-                                <button className="cart-summary__checkout-btn"
-                                disabled={cartItems.length === 0}>
+                                <Link 
+                                    to='/checkout'
+                                    className="cart-summary__checkout-btn"
+                                    disabled={cartItems.length === 0}>
                                     Checkout
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

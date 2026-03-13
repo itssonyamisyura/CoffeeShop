@@ -8,6 +8,7 @@ import { CoffeeItemsPage } from "./pages/coffee-item/CoffeeItemsPage";
 import { NotFoundPage } from "./pages/404/NotFoundPage";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { CartPage } from "./pages/cart/CartPage";
+import { CheckoutPage } from "./pages/CheckoutPage/CheckoutPage";
 
 function App() {
 
@@ -122,6 +123,14 @@ function App() {
 					cartCount={cartCount}
 					undoClearCart={undoClearCart}/>
 				} 
+				/>
+				<Route
+					path="/checkout"
+					element={<CheckoutPage
+					total={total}
+					cartCount={cartCount}/>
+						
+					}
 				/>
 				<Route 
 					path="*" 
