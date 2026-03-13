@@ -14,16 +14,52 @@ function App() {
 	const [cartItems, setCartItems] = useState([]);
 
 	const addToCart = (product) => {
-		setCartItems((prevItems) => [...prevItems, product]);
-		// cart was [coffee1] -> add new item coffee2 =>[coffee1, coffee2]
+		setCartItems((prev) => {
+			const existingItem = prev.find((item) => item.id === product.id);
+			//Если найден — existingItem будет объектом
+			//Если не найден — будет undefined
+
+			if (existingItem) {
+				return prev.map((item) => 
+					item.id === product.id 
+					? {...item, quantity: item.quantity + 1} 
+					//скопировать все поля старого объекта и заменить только quantitywo
+					: item
+				);
+			}
+			return [
+				...prev, {...product, quantity: 1}
+			] //...product -> id name price image
+		});
 	}
 
 	const removeFromCart = (indexToRemove) => {
-		setCartItems((prevItems) => 
-			prevItems.filter((_, index) => index !== indexToRemove)
+		setCartItems((prev) => 
+			prev.filter((_, index) => index !== indexToRemove)
 		// indexToRemove -> номер элемента в массиве
 		// index -> номер элемента
 		); 
+	};
+
+	const increaseQuantity = (idToIncrease) => {
+		setCartItems((prev) => 
+			prev.map((item) => 
+				item.id === idToIncrease 
+				? {...item, quantity: item.quantity + 1}
+				: item
+			)
+		);
+	};
+
+	const decreaseQuantity = (idToDecrease) => {
+		setCartItems((prev) => 
+			prev.map((item) => 
+				item.id === idToDecrease
+				? {...item, quantity: item.quantity - 1}
+				: item
+			)
+			.filter((item) => item.quantity > 0)
+		);
 	};
 
 	return (
@@ -53,7 +89,9 @@ function App() {
 					path="/cart" 
 					element={<CartPage
 					cartItems={cartItems}
-					removeFromCart={removeFromCart}/>} 
+					removeFromCart={removeFromCart}
+					increaseQuantity={increaseQuantity}
+					decreaseQuantity={decreaseQuantity}/>} 
 				/>
 				<Route 
 					path="*" 

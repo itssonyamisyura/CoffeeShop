@@ -1,10 +1,11 @@
 
-export const CartPage = ({cartItems, removeFromCart}) => {
+export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQuantity}) => {
 
     const total = cartItems.reduce((sum, item) => {
+        console.log(cartItems);
         const price = parseFloat(item.price.replace('$', ''));
-        return sum + price;
-    }, 0);
+        return sum + price * item.quantity;
+    }, 0); 
 
     return (
         <section className="cart-page">
@@ -16,15 +17,19 @@ export const CartPage = ({cartItems, removeFromCart}) => {
             ) : (
                 <div>
                     {cartItems.map((item, index) => (
-                            <div key={index}>
+                        <div key={index}>
                             <p>{item.name}</p>
                             <p>{item.price}</p>
+                            <div>
+                                <button onClick={() => decreaseQuantity(item.id)}>-</button>
+                                    <span>Quantity: {item.quantity}</span>
+                                <button onClick={() => increaseQuantity(item.id)}>+</button>
+                            </div>
                             <button onClick={() => removeFromCart(index)}>
                                 Remove
-                            </button>
+                            </button>   
                         </div>
                         ))}
-
                     <h2>Total: ${total.toFixed(2)}</h2>
                 </div>
             )}
