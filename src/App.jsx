@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MainPage } from "./pages/main/MainPage";
 import { CoffeePage } from "./pages/coffee/CoffeePage";
 import { GoodsPage } from "./pages/goods/GoodsPage";
@@ -11,7 +11,10 @@ import { CartPage } from "./pages/cart/CartPage";
 
 function App() {
 
-	const [cartItems, setCartItems] = useState([]);
+	const [cartItems, setCartItems] = useState(() => {
+		const savedCart = localStorage.getItem('cartItems');
+		return savedCart ? JSON.parse(savedCart) : [];
+	});
 
 	const addToCart = (product) => {
 		setCartItems((prev) => {
@@ -63,6 +66,10 @@ function App() {
 	const clearCart = () => {
 		setCartItems([]);
 	};
+
+	useEffect(() => {
+		localStorage.setItem('cartItems', JSON.stringify(cartItems));
+	}, [cartItems]); //выполни этот код, когда изменится cartItems
 
 	return (
 		<>
