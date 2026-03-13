@@ -33,11 +33,9 @@ function App() {
 		});
 	}
 
-	const removeFromCart = (indexToRemove) => {
+	const removeFromCart = (idToRemove) => {
 		setCartItems((prev) => 
-			prev.filter((_, index) => index !== indexToRemove)
-		// indexToRemove -> номер элемента в массиве
-		// index -> номер элемента
+			prev.filter((item) => item.id !== idToRemove)
 		); 
 	};
 

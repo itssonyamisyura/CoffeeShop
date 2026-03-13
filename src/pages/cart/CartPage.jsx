@@ -16,16 +16,20 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
                 <p>Your cart is empty</p>
             ) : (
                 <div>
-                    {cartItems.map((item, index) => (
-                        <div key={index}>
+                    {cartItems.map((item) => (
+                        <div key={item.id}>
                             <p>{item.name}</p>
                             <p>{item.price}</p>
+
                             <div>
                                 <button onClick={() => decreaseQuantity(item.id)}>-</button>
                                     <span>Quantity: {item.quantity}</span>
                                 <button onClick={() => increaseQuantity(item.id)}>+</button>
                             </div>
-                            <button onClick={() => removeFromCart(index)}>
+
+                            <p>Subtotal: ${(parseFloat(item.price.replace('$', '')) * item.quantity).toFixed(2)}</p>
+
+                            <button onClick={() => removeFromCart(item.id)}>
                                 Remove
                             </button>   
                         </div>
