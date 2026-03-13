@@ -60,6 +60,10 @@ function App() {
 		);
 	};
 
+	const clearCart = () => {
+		setCartItems([]);
+	};
+
 	return (
 		<>
 		<ScrollToTop />
@@ -89,7 +93,8 @@ function App() {
 					cartItems={cartItems}
 					removeFromCart={removeFromCart}
 					increaseQuantity={increaseQuantity}
-					decreaseQuantity={decreaseQuantity}/>} 
+					decreaseQuantity={decreaseQuantity}
+					clearCart={clearCart}/>} 
 				/>
 				<Route 
 					path="*" 

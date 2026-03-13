@@ -1,8 +1,7 @@
 
-export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQuantity}) => {
+export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQuantity, clearCart}) => {
 
     const total = cartItems.reduce((sum, item) => {
-        console.log(cartItems);
         const price = parseFloat(item.price.replace('$', ''));
         return sum + price * item.quantity;
     }, 0); 
@@ -19,7 +18,7 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
                     {cartItems.map((item) => (
                         <div key={item.id}>
                             <p>{item.name}</p>
-                            <p>{item.price}</p>
+                            <p>Price: {item.price}</p>
 
                             <div>
                                 <button onClick={() => decreaseQuantity(item.id)}>-</button>
@@ -35,6 +34,10 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
                         </div>
                         ))}
                     <h2>Total: ${total.toFixed(2)}</h2>
+
+                    <button onClick={clearCart}>
+                        Clear Cart
+                    </button>
                 </div>
             )}
         </section>
