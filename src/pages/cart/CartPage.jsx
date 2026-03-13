@@ -49,14 +49,7 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
                     </div>
                 ) : (
                     <div className="cart-layout">
-
-                        <div>
-                        <div className="cart-header">
-                            <span>Product</span>
-                            <span>Quantity</span>
-                            <span>Subtotal</span>
-                        </div>
-
+                        
                         <div className="cart-items">
                             {cartItems.map((item) => (
                             <CartItem 
@@ -66,8 +59,6 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
                                 onIncrease={() => increaseQuantity(item.id)} 
                                 removeFromCart={removeFromCart}/> 
                             ))}
-                        </div>
-                        
                         </div>
                         <div className="cart-summary">
                             <h2>Total: ${total.toFixed(2)}</h2>

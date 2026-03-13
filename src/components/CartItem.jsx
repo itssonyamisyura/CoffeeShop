@@ -15,21 +15,28 @@ function CartItem ({item, onIncrease, onDecrease, removeFromCart}) {
             </div>
 
             <div className="cart-item__info">
-                <p>{item.name}</p>
-                <p>Price: {item.price}</p>
+                <p className="cart-item__name">{item.name}</p>
+                <p className="cart-item__price">Price: {item.price}</p>
             </div>
 
             <div className="cart-item__actions">
                 <div className="cart-item__quantity">
-                    <button onClick={onDecrease}>-</button>
-                        <span>Quantity: {item.quantity}</span>
-                    <button onClick={onIncrease}>+</button>
+                    <button 
+                        className="cart-item__qty-btn" 
+                        onClick={onDecrease}>-</button>
+                        <span                   className="cart-item__qty-value">Quantity: {item.quantity}
+                        </span>
+                    <button
+                        className="cart-item__qty-btn"
+                        onClick={onIncrease}>+</button>
                 </div>
             </div>
-
-            <p>Subtotal: ${subtotal.toFixed(2)}</p>
-
-            <button onClick={() => removeFromCart(item.id)}>
+            <div className="cart-item__subtotal">
+                <p>Subtotal: ${subtotal.toFixed(2)}</p>
+            </div>
+            <button 
+                className="cart-item__remove-btn" 
+                onClick={() => removeFromCart(item.id)}>
                 Remove
             </button>   
         </div>
