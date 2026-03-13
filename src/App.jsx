@@ -16,6 +16,15 @@ function App() {
 		return savedCart ? JSON.parse(savedCart) : [];
 	});
 
+	const total = cartItems.reduce((sum, item) => {
+        const price = parseFloat(item.price.replace('$', ''));
+        return sum + price * item.quantity;
+    }, 0); 
+
+	const cartCount = cartItems.reduce((sum, item) => {
+		return sum + item.quantity;//общее количество товаров
+	}, 0)
+
 	const addToCart = (product) => {
 		setCartItems((prev) => {
 			const existingItem = prev.find((item) => item.id === product.id);
@@ -78,21 +87,21 @@ function App() {
 				<Route 
 					path="/" 
 					element={<MainPage 
-					cartItems={cartItems}/>}/>
+					cartCount={cartCount}/>}/>
 				<Route 
 					path="/coffee" 
 					element={<CoffeePage
-					cartItems={cartItems}/>}
+					cartCount={cartCount}/>}
 					/>
 				<Route 
 					path="/goods" 
 					element={<GoodsPage 
-					cartItems={cartItems}/>}/>
+					cartCount={cartCount}/>}/>
 				<Route 
 					path="/items/:itemId" 
 					element={<CoffeeItemsPage 
 					addToCart={addToCart}
-					cartItems={cartItems}/>}
+					cartCount={cartCount}/>}
 				/>
 				<Route 
 					path="/cart" 
@@ -101,7 +110,8 @@ function App() {
 					removeFromCart={removeFromCart}
 					increaseQuantity={increaseQuantity}
 					decreaseQuantity={decreaseQuantity}
-					clearCart={clearCart}/>} 
+					clearCart={clearCart}
+					total={total}/>} 
 				/>
 				<Route 
 					path="*" 

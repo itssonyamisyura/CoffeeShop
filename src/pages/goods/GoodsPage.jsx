@@ -6,15 +6,14 @@ import { CoffeeProducts } from "../../components/CoffeeProducts";
 import { CoffeeAbout } from "../../components/CoffeeAbout";
 import { CoffeeHero } from "../../components/CoffeeHero";
 
-export const GoodsPage = ({cartItems}) => {
+export const GoodsPage = ({cartCount}) => {
 	return (
 		<div className="goods-page">
 			{/* HERO */}
 			<CoffeeHero
 			image={GoodsBG}
 			title="For your pleasure"
-			cartItems={cartItems}/>
-
+			cartCount={cartCount}/>
 
 			{/* ABOUT OUR GOODS */}
 			<CoffeeAbout

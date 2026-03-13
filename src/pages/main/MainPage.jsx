@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 import { MainHero } from "./MainHero";
 
 
-export const MainPage = ({cartItems}) => {
+export const MainPage = ({cartCount}) => {
 	return (
 		<div className="main-page">
 
@@ -15,7 +15,7 @@ export const MainPage = ({cartItems}) => {
 			</Helmet>
 
 			{/* HERO */}
-			<MainHero cartItems={cartItems}/>
+			<MainHero cartCount={cartCount}/>
 
 			{/* ABOUT */}
 			<About/>

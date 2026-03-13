@@ -8,7 +8,7 @@ import { Footer } from "../../components/Footer";
 import { CoffeeAbout } from "../../components/CoffeeAbout";
 import { Helmet } from "react-helmet-async";
 
-export const CoffeePage = ({cartItems}) => {
+export const CoffeePage = ({cartCount}) => {
 	return (
 		
 		<div className="coffee-page">
@@ -22,7 +22,7 @@ export const CoffeePage = ({cartItems}) => {
 			<CoffeeHero
 			image={maskGroupBg}
 			title="Our Coffee" 
-			cartItems={cartItems} />
+			cartCount={cartCount} />
 
 			{/* ABOUT OUR BEANS */}
 			<CoffeeAbout

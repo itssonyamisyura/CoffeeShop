@@ -1,7 +1,7 @@
 import menuLogoWhite from "../assets/menuLogoWhite.png";
 import { NavLink, Link} from "react-router-dom";
 
-export const CoffeeHero = ({image, title, cartItems}) => {
+export const CoffeeHero = ({image, title, cartCount}) => {
     return (
         <section className="coffee-hero" style={{ backgroundImage: `url(${image})` }}>
             <nav className="nav">
@@ -13,7 +13,7 @@ export const CoffeeHero = ({image, title, cartItems}) => {
                     <li><NavLink to='/coffee'>Our coffee</NavLink></li>
                     <li><NavLink to='/goods'>For your pleasure</NavLink></li>
                     <li>
-                    <NavLink to='/cart' className="nav__cart">Cart ({cartItems.length})</NavLink>
+                    <NavLink to='/cart' className="nav__cart">Cart ({cartCount})</NavLink>
                     </li>
                 </ul>
             </nav>

@@ -1,12 +1,7 @@
 import CartItem from '../../components/CartItem';
 import { Link } from 'react-router-dom';
 
-export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQuantity, clearCart}) => {
-
-    const total = cartItems.reduce((sum, item) => {
-        const price = parseFloat(item.price.replace('$', ''));
-        return sum + price * item.quantity;
-    }, 0); 
+export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, total}) => {
 
     return (
         <section className="cart-page">
