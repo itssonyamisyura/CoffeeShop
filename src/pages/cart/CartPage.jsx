@@ -1,4 +1,5 @@
 import CartItem from '../../components/CartItem';
+import { Link } from 'react-router-dom';
 
 export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQuantity, clearCart}) => {
 
@@ -25,7 +26,7 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
                             removeFromCart={removeFromCart}/> 
                         ))}
                     <h2>Total: ${total.toFixed(2)}</h2>
-
+                    <Link to='/coffee'>Continue Shopping</Link>
                     {cartItems.length > 0 && (
                         <button onClick={clearCart}>
                             Clear Cart
