@@ -1,35 +1,69 @@
 import CartItem from '../../components/CartItem';
 import { Link } from 'react-router-dom';
+import { CoffeeHero } from '../../components/CoffeeHero';
+import { Footer } from '../../components/Footer';
+import maskGroupBg from "../../assets/maskGroupBg.png";
+import './CartPage.css';
 
-export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, total}) => {
+export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, total, cartCount}) => {
 
     return (
-        <section className="cart-page">
-            <h1>Cart</h1>
-            <p>Items in cart: {cartItems.length}</p>
+        <div className="cart-page">
 
-            {cartItems.length === 0 ? (
-                <p>Your cart is empty</p>
-            ) : (
-                <div>
-                    {cartItems.map((item) => (
-                        <CartItem 
-                            key={item.id} 
-                            item={item}
-                            decreaseQuantity={decreaseQuantity}
-                            increaseQuantity={increaseQuantity} 
-                            removeFromCart={removeFromCart}/> 
-                        ))}
-                    <h2>Total: ${total.toFixed(2)}</h2>
-                    <Link to='/coffee'>Continue Shopping</Link>
-                    {cartItems.length > 0 && (
-                        <button onClick={clearCart}>
-                            Clear Cart
-                        </button>
+            <CoffeeHero
+            image={maskGroupBg}
+            title="Your cart"
+            cartCount={cartCount}
+            />
+
+            <section className="cart-content">
+                <h1>Cart</h1>
+                {cartItems.length > 0 && (
+                     <p>Items in cart: {cartItems.length}</p>
+                )}
+
+                {cartItems.length === 0 ? (
+                    <div className="cart-empty">
+                        <h2>Your cart is empty</h2>
+                        <Link to="/coffee" className="cart-empty__btn">
+                            Browse coffee
+                        </Link>
+                    </div>
+                ) : (
+                    <div className="cart-layout">
+                        <div className="cart-items">
+                            {cartItems.map((item) => (
+                            <CartItem 
+                                key={item.id} 
+                                item={item}
+                                decreaseQuantity={decreaseQuantity}
+                                increaseQuantity={increaseQuantity} 
+                                removeFromCart={removeFromCart}/> 
+                            ))}
+                        </div>
+                        <div className="cart-summary">
+                            <h2>Total: ${total.toFixed(2)}</h2>
+
+                            <div className="cart-summary__actions">
+                                <Link 
+                                    to='/coffee'
+                                    className="cart-summary__link">Continue Shopping</Link>
+                                {cartItems.length > 0 && (
+                                    <button onClick={clearCart}>
+                                        Clear Cart
+                                    </button>
+                                )}
+                                <button className="cart-summary__checkout-btn"
+                                disabled={cartItems.length === 0}>
+                                    Checkout
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                     )}
-                </div>
-            )}
-        </section>
+                </section>
+            <Footer />
+        </div>
     );
 };
 

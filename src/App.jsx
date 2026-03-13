@@ -111,7 +111,9 @@ function App() {
 					increaseQuantity={increaseQuantity}
 					decreaseQuantity={decreaseQuantity}
 					clearCart={clearCart}
-					total={total}/>} 
+					total={total}
+					cartCount={cartCount}/>
+				} 
 				/>
 				<Route 
 					path="*" 
