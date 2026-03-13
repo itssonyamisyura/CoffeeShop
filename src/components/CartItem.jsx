@@ -1,6 +1,8 @@
 
 function CartItem ({item, increaseQuantity,decreaseQuantity, removeFromCart}) {
-    const subtotal = parseFloat(item.price.replace('$', '')) * item.quantity;
+    const price = parseFloat(item.price.replace('$', ''));
+    const subtotal = price * item.quantity;
+    
 
     return (
         <div>

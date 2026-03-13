@@ -26,9 +26,11 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
                         ))}
                     <h2>Total: ${total.toFixed(2)}</h2>
 
-                    <button onClick={clearCart}>
-                        Clear Cart
-                    </button>
+                    {cartItems.length > 0 && (
+                        <button onClick={clearCart}>
+                            Clear Cart
+                        </button>
+                    )}
                 </div>
             )}
         </section>
