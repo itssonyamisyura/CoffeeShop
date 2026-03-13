@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { MainPage } from "./pages/main/MainPage";
 import { CoffeePage } from "./pages/coffee/CoffeePage";
 import { GoodsPage } from "./pages/goods/GoodsPage";
-import { CoffeeItemsPage } from "./pages/coffee-item/CoffeeItemPage";
+import { CoffeeItemsPage } from "./pages/coffee-item/CoffeeItemsPage";
 import { NotFoundPage } from "./pages/404/NotFoundPage";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { CartPage } from "./pages/cart/CartPage";

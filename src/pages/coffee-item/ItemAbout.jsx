@@ -1,10 +1,23 @@
+import { useState } from "react";
 import blackGroup from "../../assets/blackGroup.png";
 
 export const ItemAbout = ({product, addToCart}) => {
+
+    const [addedMessage, setAddedMessage] = useState(false);
+
     if (!product) {
         return <div>Product not found</div>
     }
         
+    const handleAddToCart = () => {
+        addToCart(product);
+        setAddedMessage(true);
+
+        setTimeout(() => {
+            setAddedMessage(false)
+        }, 2000);
+    }
+
     return (
         <section className="item-about">
             <div className="item-about__img-wrap">
@@ -27,9 +40,10 @@ export const ItemAbout = ({product, addToCart}) => {
                 </p>
                 <button 
                 className="item-about__btn"
-                onClick={() => addToCart(product)}>
+                onClick={handleAddToCart}>
                     Add to cart
                 </button>
+                {addedMessage && <p>Added ✓</p>}
             </div>
         </section>
     )
