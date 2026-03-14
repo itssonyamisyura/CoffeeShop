@@ -11,15 +11,20 @@ import Typography from "@mui/material/Typography";
 
 export const CheckoutPage = ({cartCount, total}) => {
 
+    const [orderPlaced, setOrderPlaced] = useState(false);
+
     const {
         register, 
         handleSubmit, 
+        reset,
         formState: {errors}
     } = useForm();
     //register подключает input
 
     const onSubmit = (data) => {
         console.log(data);
+        setOrderPlaced(true);
+        reset();
       };
     return (
         <div>
@@ -51,7 +56,10 @@ export const CheckoutPage = ({cartCount, total}) => {
                             margin="normal"
                             error={!!errors.name}
                             helperText={errors.name?.message}
-                            {...register('name', {required: 'Name is required'})}
+                            {...register('name', {
+                                required: 'Name is required',
+                                onChange: () => setOrderPlaced(false),
+                            })}
                         />
                         <TextField
                             label='Email'
@@ -60,7 +68,10 @@ export const CheckoutPage = ({cartCount, total}) => {
                             margin="normal"
                             error={!!errors.email}
                             helperText={errors.email?.message}
-                            {...register('email', {required: 'Email is required'})}
+                            {...register('email', {
+                                required: 'Email is required',
+                                onChange: () => setOrderPlaced(false),
+                            })}
                         />
                         <TextField
                             label='Address'
@@ -69,7 +80,10 @@ export const CheckoutPage = ({cartCount, total}) => {
                             margin="normal"
                             error={!!errors.address}
                             helperText={errors.address?.message}
-                            {...register('address', {required: 'Address is required'})}
+                            {...register('address', {
+                                required: 'Address is required',
+                                onChange: () => setOrderPlaced(false),
+                            })}
                         />
                         <TextField
                             label='Phone'
@@ -78,7 +92,10 @@ export const CheckoutPage = ({cartCount, total}) => {
                             margin="normal"
                             error={!!errors.phone}
                             helperText={errors.phone?.message}
-                            {...register('phone', {required: 'Phone is required'})}
+                            {...register('phone', {
+                                required: 'Phone is required',
+                                onChange: () => setOrderPlaced(false),
+                            })}
                         />
 
                         <Button 
@@ -93,6 +110,11 @@ export const CheckoutPage = ({cartCount, total}) => {
                             }}>
                             Place order
                         </Button>
+                        {orderPlaced && (
+                            <Typography sx={{ mt: 2 }}>
+                                Order placed successfully!
+                            </Typography>
+                        )}
                     </form> 
                 </Paper>
             </Container>
