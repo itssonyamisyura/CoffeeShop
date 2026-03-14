@@ -70,6 +70,10 @@ export const CheckoutPage = ({cartCount, total}) => {
                             helperText={errors.email?.message}
                             {...register('email', {
                                 required: 'Email is required',
+                                pattern: {
+                                    value: /^\S+@\S+\.\S+$/,
+                                    message: "Enter a valid email address",
+                                },
                                 onChange: () => setOrderPlaced(false),
                             })}
                         />
@@ -87,6 +91,7 @@ export const CheckoutPage = ({cartCount, total}) => {
                         />
                         <TextField
                             label='Phone'
+                            type="tel"
                             variant="outlined"
                             fullWidth
                             margin="normal"
@@ -94,6 +99,10 @@ export const CheckoutPage = ({cartCount, total}) => {
                             helperText={errors.phone?.message}
                             {...register('phone', {
                                 required: 'Phone is required',
+                                pattern: {
+                                    value: /^[0-9+\-\s()]{6,}$/,
+                                    message: "Enter a valid phone number",
+                                },
                                 onChange: () => setOrderPlaced(false),
                             })}
                         />
