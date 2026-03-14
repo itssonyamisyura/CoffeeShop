@@ -1,11 +1,13 @@
 import { CoffeeHero } from "../../components/CoffeeHero";
 import { Footer } from "../../components/Footer";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import maskGroupBg from "../../assets/maskGroupBg.png";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 
 export const CheckoutPage = ({cartCount, total}) => {
 
@@ -29,9 +31,18 @@ export const CheckoutPage = ({cartCount, total}) => {
             <Container maxWidth="sm" sx={{ py: 6 }}>
                 <Paper elevation={3} sx={{ p: 4 }}>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <h1>Checkout</h1>
-                        <p>Items: {cartCount}</p>
-                        <p>Total: ${total.toFixed(2)}</p>
+
+                    <Typography variant="h4" component="h1" gutterBottom>
+                        Checkout
+                    </Typography>
+
+                    <Typography variant="body1">
+                        Items: {cartCount}
+                    </Typography>
+
+                    <Typography variant="body1" sx={{ mb: 2 }}>
+                        Total: ${total.toFixed(2)}
+                    </Typography>
 
                         <TextField
                             label='Name'
