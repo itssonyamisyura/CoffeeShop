@@ -128,8 +128,8 @@ function App() {
 					path="/checkout"
 					element={<CheckoutPage
 					total={total}
+					cartItems={cartItems}
 					cartCount={cartCount}/>
-						
 					}
 				/>
 				<Route 

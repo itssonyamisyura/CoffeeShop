@@ -9,7 +9,7 @@ import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 
-export const CheckoutPage = ({cartCount, total}) => {
+export const CheckoutPage = ({cartCount, total, cartItems}) => {
 
     const [orderPlaced, setOrderPlaced] = useState(false);
 
@@ -49,6 +49,16 @@ export const CheckoutPage = ({cartCount, total}) => {
                         Total: ${total.toFixed(2)}
                     </Typography>
 
+                    <Typography variant="h6" sx={{ mt: 2, mb: 1 }}>
+                        Order summary
+                    </Typography>
+
+                    {cartItems.map((item) => (
+                        <Typography key={item.id} variant="body2">
+                            {item.name} × {item.quantity}
+                        </Typography>
+                    ))}
+                    
                         <TextField
                             label='Name'
                             variant="outlined"
@@ -111,13 +121,14 @@ export const CheckoutPage = ({cartCount, total}) => {
                             type="submit"
                             variant="contained"
                             fullWidth
+                            disabled={orderPlaced}
                             sx={{ mt: 2,
                                 backgroundColor: "#1f1f1f",
                                 "&:hover": {
                                 backgroundColor: "#000",
                                 },
                             }}>
-                            Place order
+                            {orderPlaced ? "Order placed" : "Place order"}
                         </Button>
                         {orderPlaced && (
                             <Typography sx={{ mt: 2 }}>
