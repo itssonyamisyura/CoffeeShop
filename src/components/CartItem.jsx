@@ -1,3 +1,5 @@
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function CartItem ({item, onIncrease, onDecrease, removeFromCart}) {
     const price = parseFloat(item.price.replace('$', ''));
@@ -34,11 +36,13 @@ function CartItem ({item, onIncrease, onDecrease, removeFromCart}) {
             <div className="cart-item__subtotal">
                 <p>Subtotal: ${subtotal.toFixed(2)}</p>
             </div>
-            <button 
-                className="cart-item__remove-btn" 
-                onClick={() => removeFromCart(item.id)}>
-                Remove
-            </button>   
+
+            <IconButton
+            aria-label="delete" 
+            onClick={() => removeFromCart(item.id)}
+            >
+                <DeleteIcon />
+            </IconButton> 
         </div>
     )
 }
