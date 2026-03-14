@@ -1,6 +1,7 @@
 import menuLogoWhite from "../../assets/menuLogoWhite.png";
 import mainBG from "../../assets/MainBG.jpg";
 import group from "../../assets/Group.png"; 
+import { CartNavBadge } from "../../components/CartNavBadge";
 import { NavLink, Link} from "react-router-dom";
 
 
@@ -16,7 +17,7 @@ export const MainHero = ({cartCount = 0}) => {
 					<li><NavLink to='/coffee' end>Our coffee</NavLink></li>
 					<li><NavLink to='/goods'>For your pleasure</NavLink></li>
 					<li>
-						<NavLink to='/cart' className="nav__cart">Cart ({cartCount})</NavLink>
+                        <CartNavBadge cartCount={cartCount}/>
 					</li>
 				</ul>
 			</nav>
