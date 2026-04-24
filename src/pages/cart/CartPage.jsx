@@ -4,13 +4,26 @@ import { CoffeeHero } from '../../components/CoffeeHero';
 import { Footer } from '../../components/Footer';
 import maskGroupBg from "../../assets/maskGroupBg.png";
 import './CartPage.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, total, cartCount, undoClearCart}) => {
 
-    const [showUndo, setShowUndo] = useState(false);
-    
+    const [undoCountdown, setUndoCountdown] = useState(null);
 
+    useEffect(() => {
+        if (undoCountdown === null) return;
+
+        const timer = setTimeout(() => {
+            setUndoCountdown((prev) => {
+                if (prev === null) return null;
+                return prev > 1 ? prev - 1 : null;
+            });
+        }, 1000);
+
+        return () => clearTimeout(timer);
+    }, [undoCountdown]);
+
+   
     return (
         <div className="cart-page">
 
@@ -27,15 +40,15 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
                     <p>Items in cart: {cartItems.length}</p>
                 )}
 
-                {showUndo && (
+                {undoCountdown !== null && (
                     <div className="cart-undo">
-                        <span>Cart cleared.</span>
+                        <span className="cart-undo__text">Cart cleared.</span>
 
-                        <button onClick={() => {
+                        <button className="cart-undo__btn" onClick={() => {
                         undoClearCart();
-                        setShowUndo(false);
+                        setUndoCountdown(null);
                         }}>
-                            Undo
+                            Undo ({undoCountdown})
                         </button>
                     </div>
                 )}
@@ -70,11 +83,7 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
                                 {cartItems.length > 0 && (
                                     <button onClick={() => {
                                         clearCart();
-                                        setShowUndo(true);
-
-                                        setTimeout(() => {
-                                            setShowUndo(false);
-                                        }, 7000);
+                                        setUndoCountdown(7);
                                     }}>
                                         Clear Cart
                                     </button>
