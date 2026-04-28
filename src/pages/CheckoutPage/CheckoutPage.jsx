@@ -12,16 +12,16 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
-export const CheckoutPage = ({cartCount, total, cartItems, clearCart}) => {
+export const CheckoutPage = ({ cartCount, total, cartItems, clearCart }) => {
 
     const [orderPlaced, setOrderPlaced] = useState(false);
     const [orderNumber, setOrderNumber] = useState(null);
 
     const {
-        register, 
-        handleSubmit, 
+        register,
+        handleSubmit,
         reset,
-        formState: {errors}
+        formState: { errors }
     } = useForm();
 
     const onSubmit = (data) => {
@@ -30,7 +30,7 @@ export const CheckoutPage = ({cartCount, total, cartItems, clearCart}) => {
         setOrderPlaced(true);
         clearCart();
         reset();
-      };
+    };
 
     if (orderPlaced) {
         return (
@@ -38,8 +38,8 @@ export const CheckoutPage = ({cartCount, total, cartItems, clearCart}) => {
                 <CoffeeHero
                     image={maskGroupBg}
                     title="Order Confirmed"
-                    cartCount={0}/>
-                
+                    cartCount={0} />
+
                 <Container maxWidth="sm" sx={{ py: 10, textAlign: 'center' }}>
                     <Box display="flex" justifyContent="center" mb={2}>
                         <CheckCircleOutlineIcon color="success" sx={{ fontSize: 80 }} />
@@ -50,18 +50,18 @@ export const CheckoutPage = ({cartCount, total, cartItems, clearCart}) => {
                     <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
                         Your order <strong>#{orderNumber}</strong> has been placed successfully. We'll send a confirmation email with your tracking details shortly.
                     </Typography>
-                    <Button 
-                        component={Link} 
+                    <Button
+                        component={Link}
                         to="/coffee"
-                        variant="contained" 
+                        variant="contained"
                         size="large"
-                        sx={{ 
-                            backgroundColor: "#1f1f1f", 
+                        sx={{
+                            backgroundColor: "#1f1f1f",
                             px: 4, py: 1.5,
                             borderRadius: '8px',
                             textTransform: 'none',
                             fontSize: '16px',
-                            "&:hover": { backgroundColor: "#000" } 
+                            "&:hover": { backgroundColor: "#000" }
                         }}>
                         Continue Shopping
                     </Button>
@@ -74,33 +74,33 @@ export const CheckoutPage = ({cartCount, total, cartItems, clearCart}) => {
     return (
         <div>
             <CoffeeHero
-            image={maskGroupBg}
-            title="Checkout"
-            cartCount={cartCount}/>
-             
+                image={maskGroupBg}
+                title="Checkout"
+                cartCount={cartCount} />
+
             <Container maxWidth="sm" sx={{ py: 6 }}>
                 <Paper elevation={3} sx={{ p: 4, borderRadius: '12px' }}>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
-                    <Typography variant="h4" component="h1" gutterBottom fontWeight="bold">
-                        Checkout
-                    </Typography>
+                        <Typography variant="h4" component="h1" gutterBottom fontWeight="bold">
+                            Checkout
+                        </Typography>
 
-                    <Box sx={{ mb: 3, p: 2, bgcolor: '#f9f9f9', borderRadius: '8px' }}>
-                        <Typography variant="h6" sx={{ mb: 1 }}>
-                            Order summary
-                        </Typography>
-                        {cartItems.map((item) => (
-                            <Typography key={item.id} variant="body2" sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
-                                <span>{item.name} × {item.quantity}</span>
+                        <Box sx={{ mb: 3, p: 2, bgcolor: '#f9f9f9', borderRadius: '8px' }}>
+                            <Typography variant="h6" sx={{ mb: 1 }}>
+                                Order summary
                             </Typography>
-                        ))}
-                        <Typography variant="body1" fontWeight="bold" sx={{ mt: 2, pt: 2, borderTop: '1px solid #ddd', display: 'flex', justifyContent: 'space-between' }}>
-                            <span>Total</span>
-                            <span>${total.toFixed(2)}</span>
-                        </Typography>
-                    </Box>
-                    
+                            {cartItems.map((item) => (
+                                <Typography key={item.id} variant="body2" sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
+                                    <span>{item.name} × {item.quantity}</span>
+                                </Typography>
+                            ))}
+                            <Typography variant="body1" fontWeight="bold" sx={{ mt: 2, pt: 2, borderTop: '1px solid #ddd', display: 'flex', justifyContent: 'space-between' }}>
+                                <span>Total</span>
+                                <span>${total.toFixed(2)}</span>
+                            </Typography>
+                        </Box>
+
                         <TextField
                             label='Full Name'
                             variant="outlined"
@@ -155,24 +155,25 @@ export const CheckoutPage = ({cartCount, total, cartItems, clearCart}) => {
                             })}
                         />
 
-                        <Button 
+                        <Button
                             type="submit"
                             variant="contained"
                             fullWidth
                             size="large"
-                            sx={{ mt: 4,
+                            sx={{
+                                mt: 4,
                                 py: 1.5,
                                 fontSize: '16px',
                                 textTransform: 'none',
                                 borderRadius: '8px',
                                 backgroundColor: "#1f1f1f",
                                 "&:hover": {
-                                backgroundColor: "#000",
+                                    backgroundColor: "#000",
                                 },
                             }}>
                             Place order • ${total.toFixed(2)}
                         </Button>
-                    </form> 
+                    </form>
                 </Paper>
             </Container>
 

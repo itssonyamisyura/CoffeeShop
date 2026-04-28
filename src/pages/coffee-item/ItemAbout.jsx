@@ -1,9 +1,6 @@
-import { useState } from "react";
 import blackGroup from "../../assets/blackGroup.png";
 
 export const ItemAbout = ({product, addToCart}) => {
-
-    const [addedMessage, setAddedMessage] = useState(false);
 
     if (!product) {
         return <div>Product not found</div>
@@ -11,11 +8,6 @@ export const ItemAbout = ({product, addToCart}) => {
         
     const handleAddToCart = () => {
         addToCart(product);
-        setAddedMessage(true);
-
-        setTimeout(() => {
-            setAddedMessage(false)
-        }, 2000);
     }
 
     return (
@@ -42,7 +34,6 @@ export const ItemAbout = ({product, addToCart}) => {
                     onClick={handleAddToCart}>
                         Add to cart
                     </button>
-                    {addedMessage && <p className="item-about__added-msg">Added ✓</p>}
                 </div>
             </div>
         </section>

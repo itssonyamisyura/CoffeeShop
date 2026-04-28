@@ -9,6 +9,8 @@ import { NotFoundPage } from "./pages/404/NotFoundPage";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { CartPage } from "./pages/cart/CartPage";
 import { CheckoutPage } from "./pages/CheckoutPage/CheckoutPage";
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 function App() {
 
@@ -18,6 +20,7 @@ function App() {
 	});
 
 	const [lastRemovedCart, setLastRemovedCart] = useState([]);
+	const [toast, setToast] = useState({ open: false, message: '', severity: 'success' });
 
 	const total = cartItems.reduce((sum, item) => {
         const price = parseFloat(item.price.replace('$', ''));
@@ -28,24 +31,33 @@ function App() {
 		return sum + item.quantity;//общее количество товаров
 	}, 0)
 
+	const showToast = (message, severity = 'success') => {
+		setToast({ open: true, message, severity });
+	};
+
+	const handleCloseToast = (event, reason) => {
+		if (reason === 'clickaway') {
+			return;
+		}
+		setToast((prev) => ({ ...prev, open: false }));
+	};
+
 	const addToCart = (product) => {
 		setCartItems((prev) => {
 			const existingItem = prev.find((item) => item.id === product.id);
-			//Если найден — existingItem будет объектом
-			//Если не найден — будет undefined
 
 			if (existingItem) {
 				return prev.map((item) => 
 					item.id === product.id 
 					? {...item, quantity: item.quantity + 1} 
-					//скопировать все поля старого объекта и заменить только quantitywo
 					: item
 				);
 			}
 			return [
 				...prev, {...product, quantity: 1}
-			] //...product -> id name price image
+			]
 		});
+		showToast(`${product.name} added to cart!`);
 	}
 
 	const removeFromCart = (idToRemove) => {
@@ -81,12 +93,12 @@ function App() {
 	};
 
 	const undoClearCart = () => {
-		setCartItems(lastRemovedCart); //cartItems = lastRemovedCart
+		setCartItems(lastRemovedCart); 
 	}
 
 	useEffect(() => {
 		localStorage.setItem('cartItems', JSON.stringify(cartItems));
-	}, [cartItems]); //выполни этот код, когда изменится cartItems
+	}, [cartItems]); 
 
 	return (
 		<>
@@ -137,6 +149,17 @@ function App() {
 					path="*" 
 					element={<NotFoundPage></NotFoundPage>}/>
 			</Routes>
+
+			<Snackbar 
+				open={toast.open} 
+				autoHideDuration={3000} 
+				onClose={handleCloseToast}
+				anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+			>
+				<Alert onClose={handleCloseToast} severity={toast.severity} sx={{ width: '100%', fontSize: '15px' }} elevation={6} variant="filled">
+					{toast.message}
+				</Alert>
+			</Snackbar>
 		</>
 	);
 }

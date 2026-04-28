@@ -6,8 +6,8 @@ import { ItemAbout } from "./ItemAbout";
 import { CoffeeHero } from "../../components/CoffeeHero";
 import { useParams } from "react-router-dom";
 
-export const CoffeeItemsPage = ({addToCart, cartCount}) => {
-	let {itemId} = useParams();
+export const CoffeeItemsPage = ({ addToCart, cartCount }) => {
+	let { itemId } = useParams();
 
 	const product = products.find((item) => {
 		return (itemId) == item.id;
@@ -18,17 +18,17 @@ export const CoffeeItemsPage = ({addToCart, cartCount}) => {
 
 			{/* HERO */}
 			<CoffeeHero
-			image={maskGroupBg}
-			title="Our Coffee"
-			cartCount={cartCount}/>
+				image={maskGroupBg}
+				title="Our Coffee"
+				cartCount={cartCount} />
 
 			{/* ABOUT IT */}
-			<ItemAbout 
-			product={product} 
-			addToCart={addToCart}/>
+			<ItemAbout
+				product={product}
+				addToCart={addToCart} />
 
 			{/* FOOTER */}
-			<Footer/>
+			<Footer />
 		</div>
 	);
 };

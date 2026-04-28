@@ -6,25 +6,25 @@ import { CoffeeProducts } from "../../components/CoffeeProducts";
 import { CoffeeAbout } from "../../components/CoffeeAbout";
 import { CoffeeHero } from "../../components/CoffeeHero";
 
-export const GoodsPage = ({cartCount}) => {
+export const GoodsPage = ({ cartCount }) => {
 	return (
 		<div className="goods-page">
 			{/* HERO */}
 			<CoffeeHero
-			image={GoodsBG}
-			title="For your pleasure"
-			cartCount={cartCount}/>
+				image={GoodsBG}
+				title="For your pleasure"
+				cartCount={cartCount} />
 
 			{/* ABOUT OUR GOODS */}
 			<CoffeeAbout
-			image={GoodsCoffee}
-			title="About our goods"/>
+				image={GoodsCoffee}
+				title="About our goods" />
 
 			{/* PRODUCTS GRID */}
-			<CoffeeProducts/>
+			<CoffeeProducts />
 
 			{/* FOOTER */}
-			<Footer/>
+			<Footer />
 		</div>
 	);
 };

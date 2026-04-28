@@ -7,7 +7,7 @@ import './CartPage.css';
 import { useState, useEffect } from 'react';
 import { products } from '../../data/Products';
 
-export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, total, cartCount, undoClearCart}) => {
+export const CartPage = ({ cartItems, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, total, cartCount, undoClearCart }) => {
 
     const [undoCountdown, setUndoCountdown] = useState(null);
 
@@ -24,14 +24,14 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
         return () => clearTimeout(timer);
     }, [undoCountdown]);
 
-   
+
     return (
         <div className="cart-page">
 
             <CoffeeHero
-            image={maskGroupBg}
-            title="Your cart"
-            cartCount={cartCount}
+                image={maskGroupBg}
+                title="Your cart"
+                cartCount={cartCount}
             />
 
             <section className="cart-content">
@@ -46,8 +46,8 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
                         <span className="cart-undo__text">Cart cleared.</span>
 
                         <button className="cart-undo__btn" onClick={() => {
-                        undoClearCart();
-                        setUndoCountdown(null);
+                            undoClearCart();
+                            setUndoCountdown(null);
                         }}>
                             Undo ({undoCountdown})
                         </button>
@@ -63,18 +63,18 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
                     </div>
                 ) : (
                     <div className="cart-layout">
-                        
+
                         <div className="cart-items">
                             {cartItems.map((item) => {
                                 const fullProduct = products.find(p => p.id === item.id);
                                 const imgSrc = fullProduct ? fullProduct.img : item.img;
                                 return (
-                                <CartItem 
-                                    key={item.id} 
-                                    item={{...item, img: imgSrc}}
-                                    onDecrease={() => decreaseQuantity(item.id)}
-                                    onIncrease={() => increaseQuantity(item.id)} 
-                                    removeFromCart={removeFromCart}/> 
+                                    <CartItem
+                                        key={item.id}
+                                        item={{ ...item, img: imgSrc }}
+                                        onDecrease={() => decreaseQuantity(item.id)}
+                                        onIncrease={() => increaseQuantity(item.id)}
+                                        removeFromCart={removeFromCart} />
                                 );
                             })}
                         </div>
@@ -82,30 +82,30 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
                             <h2>Total: ${total.toFixed(2)}</h2>
 
                             <div className="cart-summary__actions">
-                                <Link 
+                                <Link
                                     to='/checkout'
                                     className="cart-summary__checkout-btn"
                                     disabled={cartItems.length === 0}>
                                     Checkout
                                 </Link>
                                 {cartItems.length > 0 && (
-                                    <button 
+                                    <button
                                         className="cart-summary__clear-btn"
                                         onClick={() => {
-                                        clearCart();
-                                        setUndoCountdown(7);
-                                    }}>
+                                            clearCart();
+                                            setUndoCountdown(7);
+                                        }}>
                                         Clear Cart
                                     </button>
                                 )}
-                                <Link 
+                                <Link
                                     to='/coffee'
                                     className="cart-summary__link">Continue Shopping</Link>
                             </div>
                         </div>
                     </div>
-                    )}
-                </section>
+                )}
+            </section>
             <Footer />
         </div>
     );
