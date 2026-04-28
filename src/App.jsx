@@ -129,7 +129,8 @@ function App() {
 					element={<CheckoutPage
 					total={total}
 					cartItems={cartItems}
-					cartCount={cartCount}/>
+					cartCount={cartCount}
+					clearCart={clearCart}/>
 					}
 				/>
 				<Route 

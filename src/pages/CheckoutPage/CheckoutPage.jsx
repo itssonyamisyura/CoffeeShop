@@ -9,7 +9,7 @@ import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 
-export const CheckoutPage = ({cartCount, total, cartItems}) => {
+export const CheckoutPage = ({cartCount, total, cartItems, clearCart}) => {
 
     const [orderPlaced, setOrderPlaced] = useState(false);
 
@@ -24,6 +24,7 @@ export const CheckoutPage = ({cartCount, total, cartItems}) => {
     const onSubmit = (data) => {
         console.log(data);
         setOrderPlaced(true);
+        clearCart();
         reset();
       };
     return (
