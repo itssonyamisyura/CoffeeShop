@@ -7,6 +7,9 @@ import img6 from "../assets/6.png";
 import img7 from "../assets/7.png";
 import img8 from "../assets/8.png";
 import img9 from "../assets/9.png";
+import img10 from "../assets/10.png";
+import img11 from "../assets/11.png";
+import img12 from "../assets/12.png";
 
 export const products = [
     { id: 1, name: "Kenyan AA Premium 1 kg", country: "Kenya", price: "$9.99", img: img1, description: 'Bright acidity with berry notes and a wine-like finish.'},
@@ -17,5 +20,8 @@ export const products = [
     { id: 6, name: "Kenya Dark Roast Blend 1 kg", country: "Kenya", price: "$7.99", img: img6, description: 'Bright acidity with berry notes and a wine-like finish.'},
     { id: 7, name: "Ethiopian Yirgacheffe 1 kg", country: "Ethiopia", price: "$10.49", img: img7, description: 'Floral notes with citrus and bergamot.'},
     { id: 8, name: "Guatemala Antigua 1 kg", country: "Guatemala", price: "$8.49", img: img8, description: 'Rich chocolate, subtle spice, and caramel.'},
-    { id: 9, name: "Costa Rica Tarrazu 1 kg", country: "Costa Rica", price: "$9.49", img: img9, description: 'Bright acidity, full body, and honey sweetness.'}
+    { id: 9, name: "Costa Rica Tarrazu 1 kg", country: "Costa Rica", price: "$9.49", img: img9, description: 'Bright acidity, full body, and honey sweetness.'},
+    { id: 10, name: "Sumatra Mandheling 1 kg", country: "Indonesia", price: "$11.99", img: img10, description: 'Earthy, spicy, and full-bodied with a smooth finish.'},
+    { id: 11, name: "Hawaii Kona Extra Fancy 1 kg", country: "USA", price: "$29.99", img: img11, description: 'Rich, smooth, and delicately sweet with floral notes.'},
+    { id: 12, name: "Jamaica Blue Mountain 1 kg", country: "Jamaica", price: "$34.99", img: img12, description: 'Exquisite balance, mild body, and prominent floral notes.'}
 ];
