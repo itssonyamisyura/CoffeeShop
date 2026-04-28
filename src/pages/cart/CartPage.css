@@ -233,7 +233,13 @@
 /* Media Queries */
 @media (max-width: 900px) {
     .cart-layout { flex-direction: column; gap: 30px; }
-    .cart-summary { max-width: 100%; position: static; }
+    .cart-summary { 
+        position: static; 
+        margin: 0 auto;
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+    }
 }
 @media (max-width: 600px) {
     .cart-item { 
