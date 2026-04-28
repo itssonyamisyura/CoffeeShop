@@ -24,26 +24,26 @@ export const ItemAbout = ({product, addToCart}) => {
                 <img src={product.img} alt={product.name} className="item-about__img" />
             </div>
             <div className="item-about__details">
-                <h2 className="section-title section-title--left">About it</h2>
-                <div className="section-divider section-divider--center">
-                    <img src={blackGroup} alt="" />
+                <h2 className="item-about__product-name">{product.name}</h2>
+                <div className="item-about__info">
+                    <p className="item-about__field">
+                        <span className="item-about__label">Country:</span> {product.country}
+                    </p>
+                    <p className="item-about__description">
+                        {product.description}
+                    </p>
                 </div>
-                <p className="item-about__field">
-                    <span className="item-about__label">Country:</span> {product.country}
-                </p>
-                <p className="item-about__description">
-                    <span className="item-about__label">Description:</span> {product.description}
-                </p>
-                <p className="item-about__price">
-                    <span className="item-about__price-label">Price:</span>
-                    <span className="item-about__price-value">{product.price}</span>
-                </p>
-                <button 
-                className="item-about__btn"
-                onClick={handleAddToCart}>
-                    Add to cart
-                </button>
-                {addedMessage && <p>Added ✓</p>}
+                <div className="item-about__purchase">
+                    <p className="item-about__price">
+                        {product.price}
+                    </p>
+                    <button 
+                    className="item-about__btn"
+                    onClick={handleAddToCart}>
+                        Add to cart
+                    </button>
+                    {addedMessage && <p className="item-about__added-msg">Added ✓</p>}
+                </div>
             </div>
         </section>
     )

@@ -202,3 +202,20 @@
 	margin: 0 auto;
 }
 
+/* Media Queries */
+@media (max-width: 900px) {
+	.coffee-hero__title { font-size: 42px; }
+	.coffee-about { padding: 60px 30px; gap: 40px; }
+	.coffee-about__img-wrap { flex: 0 0 220px; }
+	.coffee-filter { padding: 24px 30px; flex-direction: column; gap: 20px; }
+	.coffee-products { padding: 40px 30px 60px; }
+}
+@media (max-width: 600px) {
+	.coffee-hero__title { font-size: 32px; }
+	.coffee-about { flex-direction: column; padding: 40px 15px; gap: 30px; align-items: center; }
+	.coffee-about__img-wrap { flex: 0 0 auto; width: 100%; max-width: 270px; }
+	.coffee-about__text { flex: 1 1 auto; }
+	.coffee-filter { padding: 24px 15px; }
+	.coffee-filter__tags { flex-wrap: wrap; justify-content: center; }
+	.coffee-products { padding: 40px 15px 60px; }
+}

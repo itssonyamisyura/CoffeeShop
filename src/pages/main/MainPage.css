@@ -101,3 +101,16 @@
 	background-repeat: repeat;
 	text-align: center;
 }
+
+/* Media Queries */
+@media (max-width: 900px) {
+	.main-hero__title { font-size: 38px; }
+	.main-hero__content { padding: 30px 30px 60px; }
+	.main-about { padding: 60px 30px; }
+	.main-best { padding: 60px 30px; }
+}
+@media (max-width: 600px) {
+	.main-hero__title { font-size: 28px; }
+	.main-about { padding: 40px 15px; }
+	.main-best { padding: 40px 15px; }
+}

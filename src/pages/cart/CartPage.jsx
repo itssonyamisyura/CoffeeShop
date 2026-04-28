@@ -5,6 +5,7 @@ import { Footer } from '../../components/Footer';
 import maskGroupBg from "../../assets/maskGroupBg.png";
 import './CartPage.css';
 import { useState, useEffect } from 'react';
+import { products } from '../../data/Products';
 
 export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, total, cartCount, undoClearCart}) => {
 
@@ -64,24 +65,33 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
                     <div className="cart-layout">
                         
                         <div className="cart-items">
-                            {cartItems.map((item) => (
-                            <CartItem 
-                                key={item.id} 
-                                item={item}
-                                onDecrease={() => decreaseQuantity(item.id)}
-                                onIncrease={() => increaseQuantity(item.id)} 
-                                removeFromCart={removeFromCart}/> 
-                            ))}
+                            {cartItems.map((item) => {
+                                const fullProduct = products.find(p => p.id === item.id);
+                                const imgSrc = fullProduct ? fullProduct.img : item.img;
+                                return (
+                                <CartItem 
+                                    key={item.id} 
+                                    item={{...item, img: imgSrc}}
+                                    onDecrease={() => decreaseQuantity(item.id)}
+                                    onIncrease={() => increaseQuantity(item.id)} 
+                                    removeFromCart={removeFromCart}/> 
+                                );
+                            })}
                         </div>
                         <div className="cart-summary">
                             <h2>Total: ${total.toFixed(2)}</h2>
 
                             <div className="cart-summary__actions">
                                 <Link 
-                                    to='/coffee'
-                                    className="cart-summary__link">Continue Shopping</Link>
+                                    to='/checkout'
+                                    className="cart-summary__checkout-btn"
+                                    disabled={cartItems.length === 0}>
+                                    Checkout
+                                </Link>
                                 {cartItems.length > 0 && (
-                                    <button onClick={() => {
+                                    <button 
+                                        className="cart-summary__clear-btn"
+                                        onClick={() => {
                                         clearCart();
                                         setUndoCountdown(7);
                                     }}>
@@ -89,11 +99,8 @@ export const CartPage = ({cartItems, removeFromCart, increaseQuantity, decreaseQ
                                     </button>
                                 )}
                                 <Link 
-                                    to='/checkout'
-                                    className="cart-summary__checkout-btn"
-                                    disabled={cartItems.length === 0}>
-                                    Checkout
-                                </Link>
+                                    to='/coffee'
+                                    className="cart-summary__link">Continue Shopping</Link>
                             </div>
                         </div>
                     </div>

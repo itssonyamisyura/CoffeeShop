@@ -80,3 +80,18 @@
 	background: #fff;
 	border-top: 1px solid #e8e8e8;
 }
+
+/* Media Queries */
+@media (max-width: 900px) {
+	.goods-hero__title { font-size: 42px; }
+	.goods-about { padding: 60px 30px; gap: 40px; }
+	.goods-about__img-wrap { flex: 0 0 220px; }
+	.goods-products { padding: 40px 30px 60px; }
+}
+@media (max-width: 600px) {
+	.goods-hero__title { font-size: 32px; }
+	.goods-about { flex-direction: column; padding: 40px 15px; gap: 30px; align-items: center; }
+	.goods-about__img-wrap { flex: 0 0 auto; width: 100%; max-width: 260px; }
+	.goods-about__text { flex: 1 1 auto; }
+	.goods-products { padding: 40px 15px 60px; }
+}
