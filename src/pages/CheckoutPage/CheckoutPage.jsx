@@ -155,6 +155,59 @@ export const CheckoutPage = ({ cartCount, total, cartItems, clearCart }) => {
                             })}
                         />
 
+                        <Typography variant="h6" sx={{ mt: 3, mb: 1, fontWeight: 'medium' }}>
+                            Payment Details
+                        </Typography>
+
+                        <TextField
+                            label='Card Number'
+                            variant="outlined"
+                            fullWidth
+                            margin="normal"
+                            error={!!errors.cardNumber}
+                            helperText={errors.cardNumber?.message}
+                            {...register('cardNumber', {
+                                required: 'Card number is required',
+                                pattern: {
+                                    value: /^\d{16}$/,
+                                    message: "Enter a valid 16-digit card number",
+                                },
+                            })}
+                        />
+
+                        <Box sx={{ display: 'flex', gap: 2 }}>
+                            <TextField
+                                label='Expiry Date (MM/YY)'
+                                variant="outlined"
+                                fullWidth
+                                margin="normal"
+                                error={!!errors.expiry}
+                                helperText={errors.expiry?.message}
+                                {...register('expiry', {
+                                    required: 'Expiry is required',
+                                    pattern: {
+                                        value: /^(0[1-9]|1[0-2])\/\d{2}$/,
+                                        message: "Use MM/YY format",
+                                    },
+                                })}
+                            />
+                            <TextField
+                                label='CVC'
+                                variant="outlined"
+                                fullWidth
+                                margin="normal"
+                                error={!!errors.cvc}
+                                helperText={errors.cvc?.message}
+                                {...register('cvc', {
+                                    required: 'CVC is required',
+                                    pattern: {
+                                        value: /^\d{3,4}$/,
+                                        message: "Enter 3 or 4 digits",
+                                    },
+                                })}
+                            />
+                        </Box>
+
                         <Button
                             type="submit"
                             variant="contained"
