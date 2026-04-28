@@ -35,8 +35,6 @@ export const CartPage = ({ cartItems, removeFromCart, increaseQuantity, decrease
             />
 
             <section className="cart-content">
-                <h1>Cart</h1>
-
                 {cartItems.length > 0 && (
                     <p>Items in cart: {cartItems.length}</p>
                 )}
